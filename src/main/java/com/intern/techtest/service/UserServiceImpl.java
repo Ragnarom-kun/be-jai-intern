@@ -70,11 +70,11 @@ public class UserServiceImpl implements UserService {
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             Set<String> rolesName = new HashSet<>();
-            for (Roles role : user.getRoles()) {
-                if (role.getName().equals(RolesEnum.PREMIUM_USER)) {
+            for (Role role : user.getRoles()) {
+                if (role.getName().equals(ERole.PREMIUM_USER)) {
                     return false;
                 }
-                else if (role.getName().equals(RolesEnum.BASIC_USER)) {
+                else if (role.getName().equals(ERole.BASIC_USER)) {
                     continue;
                 }
                 rolesName.add(role.getName().name());
@@ -96,10 +96,10 @@ public class UserServiceImpl implements UserService {
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
 
-            for (Roles role : user.getRoles()) {
-                if (role.getName().equals(RolesEnum.BASIC_USER)) {
+            for (Role role : user.getRoles()) {
+                if (role.getName().equals(ERole.BASIC_USER)) {
                     return totalConversion < 5;
-                } else if (role.getName().equals(RolesEnum.PREMIUM_USER)) {
+                } else if (role.getName().equals(ERole.PREMIUM_USER)) {
                     return true;
                 }
             }
